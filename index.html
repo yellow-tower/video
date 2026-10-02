@@ -10,7 +10,7 @@ document.getElementById('wrap').onclick=function(){if(!on){setOn(true);return}if
 snd.onclick=function(){v.muted=!v.muted;if(!v.muted)play()};
 document.getElementById('big').onclick=function(){if(d.requestFullscreen&&document.fullscreenEnabled){d.requestFullscreen().catch(function(){})}else if(d.webkitRequestFullscreen&&document.webkitFullscreenEnabled){d.webkitRequestFullscreen()}else if(v.webkitEnterFullscreen){v.webkitEnterFullscreen()}};
 var solo=window.top===window.self;if(solo)B.classList.add('solo');
-document.getElementById('x').onclick=function(){if(fsEl())(document.exitFullscreen||document.webkitExitFullscreen).call(document);if(solo){v.pause();if(history.length>1)history.back();else window.close();return}setOn(false)};
+document.getElementById('x').onclick=function(){if(fsEl())(document.exitFullscreen||document.webkitExitFullscreen).call(document);if(solo){v.pause();window.close();setTimeout(function(){location.href='https://www.thegreenpenthouse.com/'},300);return}setOn(false)};
 v.addEventListener('webkitendfullscreen',function(){if(!userPaused)play()});
 new IntersectionObserver(function(e){inView=e[0].isIntersecting;if(inView){if(!userPaused)play()}else v.pause()},{threshold:0.5}).observe(B);
 document.addEventListener('visibilitychange',function(){if(!document.hidden&&inView&&!userPaused)play()});
